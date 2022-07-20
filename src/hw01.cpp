@@ -3,11 +3,11 @@
 
 std::vector<bool> getSternBrocotPath(unsigned short n, unsigned short m) {
     unsigned short a1 = 0,
-          a2 = 1,
-          b1 = 1,
-          b2 = 1,
-          c1 = 1,
-          c2 = 0;
+                   a2 = 1,
+                   b1 = 1,
+                   b2 = 1,
+                   c1 = 1,
+                   c2 = 0;
 
     std::vector<bool> solution = {};
     double key = (double) n / m;
