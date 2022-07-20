@@ -15,7 +15,7 @@ Execute
 make all
 ```
 
-then you will see a new file `algorithm451.o`, an executable file.
+then you will see a new file `algorithm451.out`, an executable file.
 
 Next, run 
 
