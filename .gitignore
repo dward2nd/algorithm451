@@ -1,0 +1,14 @@
+# macOS system file
+.DS_Store
+
+# project-specific file
+submission/
+algorithm451*
+
+# cmake
+*.dir/
+CMakeFiles/
+*.log
+CMakeCache.txt
+cmake_install.cmake
+*Makefile*
