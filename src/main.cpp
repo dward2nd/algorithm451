@@ -14,16 +14,11 @@ int main() {
         << "==========\n";
 
     char hw;
-    std::cout << "Homework number: ";
+    std::cout << "\nHomework number: ";
     std::cin >> hw;
 
-    // if (hw >= 'a' && hw <= 'z') {
-    //     hw -= 'a';
-    //     tests[hw]();
-    // } else {
     hw -= '1';
     mains[hw]();
-    // }
 
     return 0;
 }
