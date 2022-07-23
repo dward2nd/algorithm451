@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "HW01.cpp"
+#include "hw01.cpp"
 
 typedef void (*hwMain)();
 
@@ -22,3 +22,4 @@ int main() {
 
     return 0;
 }
+
