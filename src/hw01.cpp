@@ -1,13 +1,14 @@
+#include <cstdint>
 #include <iostream>
 #include <vector>
 
-std::vector<bool> getSternBrocotPath(unsigned short n, unsigned short m) {
-    unsigned short a1 = 0,
-                   a2 = 1,
-                   b1 = 1,
-                   b2 = 1,
-                   c1 = 1,
-                   c2 = 0;
+std::vector<bool> getSternBrocotPath(std::uint_fast16_t n, std::uint_fast16_t m) {
+    std::uint_fast16_t a1 = 0,
+                  a2 = 1,
+                  b1 = 1,
+                  b2 = 1,
+                  c1 = 1,
+                  c2 = 0;
 
     std::vector<bool> solution = {};
     double key = (double) n / m;
@@ -39,7 +40,7 @@ void hw01() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(nullptr);
 
-    unsigned short n, m;
+    std::uint_fast16_t n, m;
     std::cin >> n >> m;
 
     std::vector<bool> result = getSternBrocotPath(n, m);
