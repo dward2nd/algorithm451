@@ -48,3 +48,17 @@ similar prompt like this one.*
 For example, if you want to run HW01, then input `1` (it is between `[` and
 `]`) and enter. It will then bring you to **HW01**.
 
+## To submit to the grader
+
+If you take a look carefully in the homework files, you will notice that 
+there are no main funcions (those declared using `int main()`). This 
+is because of the compilation convenience. However, I already made a solution 
+for such a problem.
+
+Go to the root directory of this project, and run 
+
+```bash
+python make_submission_file.py src/*.cpp
+```
+
+
