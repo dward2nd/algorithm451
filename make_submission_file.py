@@ -4,6 +4,31 @@ import sys
 
 import typing
 
+def format(filepath):
+    # format file using clang-format
+    if os.system("which clang-format > /dev/null") == 0:
+        fps = lambda el, n: [el] * n
+        os.system(
+            (
+                "clang-format "
+                "{} "
+                "-style=\"{{BasedOnStyle: llvm, IndentWidth: 4}}\" "
+                "| tee {}.tmp > /dev/null"
+            ).format(*fps(filepath, 2))
+        )
+        os.system(
+            (
+                "cat {}.tmp | tee {} > /dev/null"
+            ).format(*fps(filepath, 2))
+        )
+        os.system(
+            (
+                "rm {}.tmp"
+            ).format(filepath)
+        )
+    else:
+        print("Note: clang-format isn't installed.")
+
 def main(args) -> None:
     filenames: str = args[1:]
 
@@ -14,6 +39,7 @@ def main(args) -> None:
 
         lines: typing.List[str] = []
 
+        format(filename)
         with open(filename, mode="r") as file:
             for line in file:
                 count += 1
@@ -26,13 +52,17 @@ def main(args) -> None:
 
                 lines.append(line)
 
-        lines[void_start - 1] = "int main() {"
+        lines[void_start - 1] = "int main() {\n"
         lines.insert(void_end - 1, "\n")
         lines.insert(void_end, "    return 0;\n")
         
         filename = filename.split("/")[-1]
-        with open("submission/" + filename, mode="w", encoding="utf-8") as file:
+        filepath = "submission/" + filename
+        with open(filepath, mode="w", encoding="utf-8") as file:
             file.writelines(lines)
+
+        # format file using clang-format
+        format(filepath)
 
 
 if __name__ == "__main__":

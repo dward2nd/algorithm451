@@ -20,7 +20,7 @@ then you will see a new file `algorithm451.out`, an executable file.
 Next, run 
 
 ```bash
-./algorithm451.o
+./algorithm451.out
 ```
 
 You will see a prompt that asks you to input a specific choice (in other words, 
@@ -47,6 +47,22 @@ similar prompt like this one.*
 
 For example, if you want to run HW01, then input `1` (it is between `[` and
 `]`) and enter. It will then bring you to **HW01**.
+
+## To run with input sample text file
+
+```bash
+echo "hw_no "$(cat input_sample/filename.txt) | ./algorithm451.out
+```
+
+For example,
+
+```bash
+echo "2 "$(cat input_sample/hw02_in02.txt) | ./algorithm451.out
+```
+
+In this case, `hw_no` is 2
+
+The output 
 
 ## To submit to the grader
 
