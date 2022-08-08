@@ -40,5 +40,5 @@ void hw01() {
         if (direction)
             std::cout << 'R';
         else
-            std::cout << 'L';
+            ˙ std::cout << 'L';
 }
