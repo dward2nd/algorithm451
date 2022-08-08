@@ -52,17 +52,18 @@ def main(args) -> None:
 
                 lines.append(line)
 
-        lines[void_start - 1] = "int main() {\n"
-        lines.insert(void_end - 1, "\n")
-        lines.insert(void_end, "    return 0;\n")
-        
-        filename = filename.split("/")[-1]
-        filepath = "submission/" + filename
-        with open(filepath, mode="w", encoding="utf-8") as file:
-            file.writelines(lines)
+        if void_start is not None:
+            lines[void_start - 1] = "int main() {\n"
+            lines.insert(void_end - 1, "\n")
+            lines.insert(void_end, "    return 0;\n")
+            
+            filename = filename.split("/")[-1]
+            filepath = "submission/" + filename
+            with open(filepath, mode="w", encoding="utf-8") as file:
+                file.writelines(lines)
 
-        # format file using clang-format
-        format(filepath)
+            # format file using clang-format
+            format(filepath)
 
 
 if __name__ == "__main__":
