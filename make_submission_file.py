@@ -1,41 +1,36 @@
 import os
-
 import sys
-
 import typing
+
+
+def fps(el, n):
+    return [el] * n
+
 
 def format(filepath):
     # format file using clang-format
     if os.system("which clang-format > /dev/null") == 0:
-        fps = lambda el, n: [el] * n
         os.system(
             (
                 "clang-format "
                 "{} "
-                "-style=\"{{BasedOnStyle: llvm, IndentWidth: 4}}\" "
+                '-style="{{BasedOnStyle: llvm, IndentWidth: 4}}" '
                 "| tee {}.tmp > /dev/null"
             ).format(*fps(filepath, 2))
         )
-        os.system(
-            (
-                "cat {}.tmp | tee {} > /dev/null"
-            ).format(*fps(filepath, 2))
-        )
-        os.system(
-            (
-                "rm {}.tmp"
-            ).format(filepath)
-        )
+        os.system(("cat {}.tmp | tee {} > /dev/null").format(*fps(filepath, 2)))
+        os.system(("rm {}.tmp").format(filepath))
     else:
         print("Note: clang-format isn't installed.")
+
 
 def main(args) -> None:
     filenames: str = args[1:]
 
     for filename in filenames:
         count: int = 0
-        void_start: Union[int, None] = None
-        void_end: Union[int, None] = None
+        void_start: typing.Union[int, None] = None
+        void_end: typing.Union[int, None] = None
 
         lines: typing.List[str] = []
 
@@ -56,7 +51,7 @@ def main(args) -> None:
             lines[void_start - 1] = "int main() {\n"
             lines.insert(void_end - 1, "\n")
             lines.insert(void_end, "    return 0;\n")
-            
+
             filename = filename.split("/")[-1]
             filepath = "submission/" + filename
             with open(filepath, mode="w", encoding="utf-8") as file:
