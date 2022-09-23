@@ -60,7 +60,22 @@ For example,
 echo "2 "$(cat input_sample/hw02_in02.txt) | ./algorithm451.out
 ```
 
-In this case, `hw_no` is 2
+In this case, `hw_no` is 2.
+
+## To run with input sample and compare
+
+Run a command in a form of
+
+```bash
+( cmd | ( cmd | ( diff /dev/fd/3 /dev/fd/4 ) 4<&0 ) 3<&0 )
+```
+
+This command compares outputs from two commands. In our case, for example
+
+```bash
+( (echo "2 "$(cat input_sample/hw02_in02.txt) | ./algorithm451.out --no-prompt)
+| ( cat output_sample/hw02_out02.txt | ( diff /dev/fd/3 /dev/fd/4 ) 4<&0 ) 3<&0 )
+```
 
 The output 
 

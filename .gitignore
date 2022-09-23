@@ -3,12 +3,18 @@
 
 # project-specific file
 submission/
-algorithm451*
+algorithm451.out
 
 # cmake
+.cmake
+.cache
 *.dir/
 CMakeFiles/
 *.log
 CMakeCache.txt
 cmake_install.cmake
 *Makefile*
+build
+Debug/
+.clang-format
+compile_commands.json

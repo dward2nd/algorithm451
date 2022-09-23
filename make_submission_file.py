@@ -57,9 +57,6 @@ def main(args) -> None:
             with open(filepath, mode="w", encoding="utf-8") as file:
                 file.writelines(lines)
 
-            # format file using clang-format
-            format(filepath)
-
 
 if __name__ == "__main__":
     main(sys.argv)
