@@ -7,14 +7,17 @@ const int INF = 10000;
 
 int attackCount(int n, int &k, int *damage) {
     std::sort(damage, damage + k);
-    int count = n / damage[k - 1];
-    int leftover = n % damage[k - 1];
-    for (int j = k - 2; j >= 0 && leftover > 0; --j) {
-        count += leftover / damage[j];
-        leftover %= damage[j];
-    }
+    int min = INF;
+    for (int i = k - 1; i >= 0; --i) {
+        int count = n / damage[i];
+        int leftover = n % damage[i];
+        for (int j = i - 1; j >= 0 && leftover > 0; --j) {
+            count += leftover / damage[j];
+            leftover %= damage[j];
+        }
 
-    int min = std::min(INF, count);
+        min = std::min(min, count);
+    }
 
     return min;
 }
