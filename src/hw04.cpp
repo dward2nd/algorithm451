@@ -1,22 +1,23 @@
 #include <algorithm>
 #include <ios>
 #include <iostream>
-#include <limits>
 
 const int INF = 10000;
 
 int attackCount(int n, int &k, int *damage) {
-    std::sort(damage, damage + k);
-    int count = n / damage[k - 1];
-    int leftover = n % damage[k - 1];
-    for (int j = k - 2; j >= 0 && leftover > 0; --j) {
-        count += leftover / damage[j];
-        leftover %= damage[j];
+    int dp[n + 1];
+    dp[0] = 0;
+    std::fill(dp + 1, dp + n + 1, INF);
+
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 0; j < k; ++j) {
+            int d = i - damage[j];
+            if (d >= 0)
+                dp[i] = std::min(dp[i], dp[d] + 1);
+        }
     }
 
-    int min = std::min(INF, count);
-
-    return min;
+    return dp[n];
 }
 
 void hw04() {
