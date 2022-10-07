@@ -3,7 +3,7 @@
 #include <iostream>
 #include <limits>
 
-int INF = 10000;
+const int INF = 10000;
 
 int attackCount(int n, int &k, int *damage) {
     int dp[n + 1];
