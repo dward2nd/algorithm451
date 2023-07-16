@@ -53,7 +53,13 @@ def main(args) -> None:
             lines.insert(void_end, "    return 0;\n")
 
             filename = filename.split("/")[-1]
-            filepath = "submission/" + filename
+            dirname = "submission/"
+            filepath = dirname + filename
+
+            # if directory 'submission' doesn't exist, create a new one.
+            if not os.path.exists(dirname):
+                os.makedirs(dirname)
+
             with open(filepath, mode="w", encoding="utf-8") as file:
                 file.writelines(lines)
 
